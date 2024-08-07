@@ -5,8 +5,19 @@
 
 import scrapy
 
+'''
+进行建模
+提前定义采集哪些字段
+可以防止手误，采集的时候会自动校验
+'''
 
 class ScrapydemoItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    # 讲师姓名
+    name = scrapy.Field()
+
+    # 讲师头衔
+    title = scrapy.Field()
+
+    # 讲师简介
+    desc = scrapy.Field()
