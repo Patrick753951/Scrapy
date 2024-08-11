@@ -1,4 +1,5 @@
 import scrapy
+from ScrapyDemo.items import ScrapydemoItem
 
 '''
 爬虫流程
@@ -24,13 +25,15 @@ class ItcastSpider(scrapy.Spider):
         # print(len(node_list))
 
         for node in node_list:
-            temp = {}
+
+            # 创建 item 对象
+            item = ScrapydemoItem()
 
             # xpath 方法返回的是选择器对象列表
             # xpath 只含有一个值的列表，使用 extract_first() 方法获取
             # xpath 含有多个值，使用 extract() 方法获取
-            temp['name'] = node.xpath("./h3/text()").extract_first()
-            temp['title'] = node.xpath("./h4/text()")[0].extract()
-            temp['desc'] = node.xpath("./p/text()").extract_first()
+            item['name'] = node.xpath("./h3/text()").extract_first()
+            item['title'] = node.xpath("./h4/text()")[0].extract()
+            item['desc'] = node.xpath("./p/text()").extract_first()
 
-            yield temp
+            yield item
