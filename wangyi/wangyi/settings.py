@@ -14,7 +14,14 @@ NEWSPIDER_MODULE = "wangyi.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "wangyi (+http://www.yourdomain.com)"
+USER_AGENT = "wangyi (+http://www.yourdomain.com)"
+
+USER_AGENT_LIST = ["wangyi (+http://www.yourdomain.com)"]
+
+PROXY_LIST = [
+   {"ip_port":"123.207.53.84:146816", "user_passwd":"aaa:passwd"},
+   {"ip_port":"123.234.206.43:9000"},
+]
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -50,9 +57,12 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "wangyi.middlewares.WangyiDownloaderMiddleware": 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   # "wangyi.middlewares.WangyiDownloaderMiddleware": 543,
+   "wangyi.middlewares.RandomUserAgent": 543,
+   "wangyi.middlewares.RandomProxy": 543,
+   "wangyi.middlewares.SeleniumMiddleware": 543,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html

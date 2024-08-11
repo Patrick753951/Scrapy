@@ -49,3 +49,25 @@ crawl spider 爬虫
 2. 作用：修改 header 以及 cookies，设置代理 IP， 对请求进行定制化操作
 3. 写在 middlewares 文件中
 4. 通常使用下载中间件
+
+- 使用方法
+1. middlewares 文件中定义中间件
+2. 重写处理请求或者响应的方法
+3. 在 setting 文件中开启 中间件
+
+- 下载中间件默认方法
+![img.png](img.png)
+process_reqeust(self,request,spider)
+- 如果所有中间件都返回 None，则请求最终交给下载器处理
+- 如果返回 request，则将请求交给调度器
+- 如果返回 response，将相应对象交给 spider 进行解析
+process_response(self,request,response,spider)
+- 如果返回 request，则将请求交给调度器
+- 如果返回 response，将相应对象交给 spider 进行解析
+
+----
+涉及到多级跳转
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)
