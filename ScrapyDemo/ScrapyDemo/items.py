@@ -11,6 +11,9 @@ import scrapy
 可以防止手误，采集的时候会自动校验
 '''
 
+'''
+Demo project itme 文件
+'''
 class ScrapydemoItem(scrapy.Item):
     # define the fields for your item here like:
     # 讲师姓名
@@ -21,3 +24,10 @@ class ScrapydemoItem(scrapy.Item):
 
     # 讲师简介
     desc = scrapy.Field()
+
+'''
+wangyi project itme 文件
+'''
+class WangyiIem(scrapy.Item):
+    # define the fields for your item here like:
+    pass
